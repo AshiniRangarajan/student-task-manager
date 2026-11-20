@@ -2,7 +2,11 @@ __pycache__/
 *.py[cod]
 .venv/
 .env
+.env.*
 !.env.example
 frontend/node_modules/
 frontend/dist/
 frontend/.vite/
+*.sqlite
+*.sqlite3
+*.db
