@@ -8,7 +8,6 @@ A responsive complaint management app built with React, Flask, and MongoDB. It u
 - `backend/app.py` — Flask REST API and MongoDB collection setup
 - `requirements.txt` — Python dependencies
 - `.env.example` — local MongoDB and Flask configuration template
-- `GIT_WORKFLOW.md` — what to commit, what to keep private, and how to push changes
 
 ## 1. Install MongoDB
 
