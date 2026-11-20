@@ -60,6 +60,12 @@ Open **http://127.0.0.1:5173**. Keep MongoDB and both terminal windows running w
 
 For a single Flask-hosted production build, run `npm run build` in the `frontend` folder, then start the backend and open **http://127.0.0.1:5000**.
 
+## Vercel frontend deployment
+
+Import the GitHub repository into Vercel and set the project **Root Directory** to `frontend`. Vercel should use the Vite framework, `npm run build` as the build command, and `dist` as the output directory. Set `VITE_FRONTEND_ONLY=true` in the Vercel project environment variables to show that this deployment is frontend-only.
+
+The current Flask API and MongoDB run separately on your computer. A Vercel site cannot access that local backend, so login, registration, and complaint actions will remain unavailable in this frontend-only deployment. Do not put database credentials, admin passwords, or other secrets in `VITE_*` variables; Vite exposes those values to browsers.
+
 ### PowerShell commands
 
 PowerShell does not support CMD's `cd /d`. Use `Set-Location` instead. In a backend terminal:

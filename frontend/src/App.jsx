@@ -20,6 +20,7 @@ const DEPARTMENTS = [
 ];
 const STATUSES = ["Pending", "In Progress", "Resolved"];
 const EMPTY_FORM = { category: "", description: "" };
+const FRONTEND_ONLY = import.meta.env.VITE_FRONTEND_ONLY === "true";
 
 async function apiRequest(url, options = {}, csrfToken = "") {
   const headers = { ...options.headers };
@@ -549,6 +550,11 @@ export default function App() {
 
   useEffect(() => {
     let active = true;
+    if (FRONTEND_ONLY) {
+      setAuthLoadError("This Vercel deployment is frontend-only. Login and complaint features require a separately deployed Flask API.");
+      setAuthReady(true);
+      return () => { active = false; };
+    }
     apiRequest("/api/auth/me")
       .then(result => {
         if (!active) return;
